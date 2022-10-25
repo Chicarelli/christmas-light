@@ -1,0 +1,99 @@
+#main {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+
+    background: darkslategrey;
+}
+
+.circle {
+    width: 40px;
+    height: 50px;
+    min-width: 40px;
+    min-height: 50px;
+    margin: 20px;
+    border-radius: 100%;
+    position: relative;
+}
+
+.circle::before {
+    position: absolute;
+    content: '';
+    width: 20px;
+    height: 20px;
+    background: black;
+    top: -18px;
+    left: 10px;
+    border-bottom: 2px solid grey;
+}
+
+.circle::after {
+    position: absolute;
+    content: '';
+    width: 60px;
+    height: 10px;
+    top: -5px;
+    left: 30px;
+    border-bottom: 2px solid grey;
+    border-radius: 100%;
+}
+
+
+.circle:last-child::after {
+    border-bottom: 0;
+}
+
+.red {
+    background: red;
+    color: red;
+}
+
+.green {
+    background: green;
+    color: green;
+}
+
+.orange {
+    background: orange;
+    color: orange;
+}
+
+.blue {
+    background: blue;
+    color: blue;
+}
+
+.yellow {
+    background: yellow;
+    color: yellow;
+}
+
+.active:nth-child(odd) {
+    animation: glow 1s infinite;
+}
+
+.active:nth-child(even) {
+    animation: glow-1 1s infinite;
+}
+
+@keyframes glow {
+    0%,
+    100% {
+        box-shadow: 10px 10px 30px, -10px -10px 30px, 10px -10px 30px, -10px 10px 30px; 
+    }
+    50% {
+        box-shadow: none;
+    }
+}
+
+@keyframes glow-1 {
+    0%,
+    100% {
+        box-shadow: none;
+    }
+    50% {
+        box-shadow: 10px 10px 30px, -10px -10px 30px, 10px -10px 30px, -10px 10px 30px; 
+    }
+}
