@@ -1,9 +1,15 @@
 function TimeController() {
-  const timeInput = this.getDocument("time_animation");
+  const getDocument = (...args) => {
+    return document.getElementById(...args);
+  };
 
   return {
-    getDocument: (...args) => {
-      return document.getElementById(...args);
+    timeInput: () => {
+      return getDocument("time_animation");
+    },
+
+    setInput: (time) => {
+      getDocument("time_animation").value = time;
     },
   };
 }
@@ -19,16 +25,26 @@ function LightsController() {
 
       for (light of lights) {
         light.style.animationDuration = `${newTime}s`;
-        console.log(`${newTime}s`);
-        console.log({ light: light.style.animationDuration });
       }
     },
   };
 }
 
 function handleUpdateTime() {
-  const lightsController = new LightsController();
-  //   const inputTime = TimeController.timeInput;
+  const lightsController = LightsController();
+  const timeController = TimeController();
 
-  lightsController.adjustTime(document.getElementById("time_animation").value);
+  const inputValue = Number(timeController.timeInput().value);
+
+  if (inputValue < 1) {
+    timeController.setInput(1);
+  }
+
+  if (inputValue > 4) {
+    timeController.setInput(4);
+  }
+
+  lightsController.adjustTime(
+    inputValue < 1 ? 1 : inputValue > 4 ? 4 : inputValue
+  );
 }
