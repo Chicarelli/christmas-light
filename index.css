@@ -1,11 +1,12 @@
+body {
+    background: darkslategrey;
+}
+
 #main {
     display: flex;
     width: 100vw;
-    height: 100vh;
     flex-wrap: nowrap;
     overflow-x: hidden;
-
-    background: darkslategrey;
 }
 
 .circle {
@@ -39,7 +40,6 @@
     border-bottom: 2px solid grey;
     border-radius: 100%;
 }
-
 
 .circle:last-child::after {
     border-bottom: 0;
@@ -96,4 +96,25 @@
     50% {
         box-shadow: 10px 10px 30px, -10px -10px 30px, 10px -10px 30px, -10px 10px 30px; 
     }
+}
+
+.controller {
+    margin-top: 100px;
+}
+
+.controller > label {
+    color: white;
+    font-size: 1.2rem;
+}
+
+.controller > input {
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid gray;
+    padding: 3px 8px;
+    font-size: 1.1rem;
+}
+
+input.time {
+    width: 50px;
 }
